@@ -24,13 +24,14 @@ function displayTemp(response) {
   let description = document.querySelector(".weather-text");
   let humidityval = document.querySelector(".humidity");
   let windval = document.querySelector(".wind");
+  let iconfound = document.querySelector("#icon");
 
   currentTemp = Math.round(currentTemp);
   tempValue.innerHTML = `${currentTemp}`;
   description.innerHTML = response.data.condition.description;
   humidityval.innerHTML = `${response.data.temperature.humidity}%`;
   windval.innerHTML = `${response.data.temperature.wind} kmh`;
-
+  iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
 
 }
 

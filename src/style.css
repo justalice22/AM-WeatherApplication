@@ -73,9 +73,10 @@ main{
 .weather-app-details span{
     color:#D55D95;
 }
-.weather-icon{
-    font-size:40px;
-    margin-top: 22px;
+.icon{
+    width:88px;
+    height:88px;
+    margin-top: 5px;
 }
 
 .weather-temp-value{
