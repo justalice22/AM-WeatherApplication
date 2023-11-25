@@ -70,7 +70,7 @@ main{
     display: flex;
 }
 
-.weather-app-details strong{
+.weather-app-details span{
     color:#D55D95;
 }
 .weather-icon{

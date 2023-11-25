@@ -20,9 +20,18 @@ dateTime.innerHTML = `${day} ${hours}:${min}`;
 
 function displayTemp(response) {
   let currentTemp = response.data.temperature.current;
+  let tempValue = document.querySelector(".weather-temp-value");
+  let description = document.querySelector(".weather-text");
+  let humidityval = document.querySelector(".humidity");
+  let windval = document.querySelector(".wind");
+
   currentTemp = Math.round(currentTemp);
-  let span = document.querySelector(".weather-temp-value");
-  span.innerHTML = `${currentTemp}`;
+  tempValue.innerHTML = `${currentTemp}`;
+  description.innerHTML = response.data.condition.description;
+  humidityval.innerHTML = `${response.data.temperature.humidity}%`;
+  windval.innerHTML = `${response.data.temperature.wind} kmh`;
+
+
 }
 
 function cityname(event) {
