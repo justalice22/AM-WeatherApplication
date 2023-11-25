@@ -1,27 +1,6 @@
-function displayTemp(response) {
-  let currentTemp = response.data.temperature.current;
-  let tempValue = document.querySelector(".weather-temp-value");
-  let description = document.querySelector("#weather-text");
-  let humidityval = document.querySelector("#humidity");
-  let windval = document.querySelector("#wind");
-  let iconfound = document.querySelector("#icon");
-  let cityelement = document.querySelector("#city-name");
-  let timeelement = document.querySelector("#date-time");
-  let date = new Date(response.data.time * 1000);
-
-  currentTemp = Math.round(currentTemp);
-  tempValue.innerHTML = `${currentTemp}`;
-  description.innerHTML = response.data.condition.description;
-  humidityval.innerHTML = `${response.data.temperature.humidity}%`;
-  windval.innerHTML = `${response.data.temperature.wind} kmh`;
-  iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
-  cityelement.innerHTML = response.data.city;
-  timeelement.innerHTML = formatDate(date);
-}
-
-function formatDate(date) {
-let minutes = date.getMinutes();
-let hours = date.getHours();
+let now = new Date();
+let hours = now.getHours();
+let min = now.getMinutes();
 let days = [
   "Sunday",
   "Monday",
@@ -31,13 +10,33 @@ let days = [
   "Friday",
   "Saturday"
 ];
-let day = days[date.getDay()];
+let day = days[now.getDay()];
 
-if (minutes <10){
-    minutes = `0${minutes}`;
-}}
+let newdate = document.querySelector("#date-time");
+newdate.innerHTML = `${day} ${hours}:${min}`;
+//
 
-return `${day} ${hours}:${minutes}`;
+function displayTemp(response) {
+  let currentTemp = response.data.temperature.current;
+  let tempValue = document.querySelector(".weather-temp-value");
+  let description = document.querySelector("#weather-text");
+  let humidityval = document.querySelector("#humidity");
+  let windval = document.querySelector("#wind");
+  let iconfound = document.querySelector("#icon");
+  let cityelement = document.querySelector("#city-name");
+  
+
+  currentTemp = Math.round(currentTemp);
+  tempValue.innerHTML = `${currentTemp}`;
+  description.innerHTML = response.data.condition.description;
+  humidityval.innerHTML = `${response.data.temperature.humidity}%`;
+  windval.innerHTML = `${response.data.temperature.wind} kmh`;
+  iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
+  cityelement.innerHTML = response.data.city;
+
+}
+
+
 
 function cityname(event) {
   event.preventDefault();
