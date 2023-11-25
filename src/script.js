@@ -1,23 +1,3 @@
-
-let now = new Date();
-let hours = now.getHours();
-let min = now.getMinutes();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tueday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-let day = days[now.getDay()];
-
-let dateTime = document.querySelector("#date-time");
-dateTime.innerHTML = `${day} ${hours}:${min}`;
-
-///
-
 function displayTemp(response) {
   let currentTemp = response.data.temperature.current;
   let tempValue = document.querySelector(".weather-temp-value");
@@ -25,7 +5,9 @@ function displayTemp(response) {
   let humidityval = document.querySelector("#humidity");
   let windval = document.querySelector("#wind");
   let iconfound = document.querySelector("#icon");
-  let cityelement = document.querySelector("#city-name")
+  let cityelement = document.querySelector("#city-name");
+  let timeelement = document.querySelector("#date-time");
+  let date = new Date(response.data.time * 1000);
 
   currentTemp = Math.round(currentTemp);
   tempValue.innerHTML = `${currentTemp}`;
@@ -34,7 +16,28 @@ function displayTemp(response) {
   windval.innerHTML = `${response.data.temperature.wind} kmh`;
   iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
   cityelement.innerHTML = response.data.city;
+  timeelement.innerHTML = formatDate(date);
 }
+
+function formatDate(date) {
+let minutes = date.getMinutes();
+let hours = date.getHours();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+let day = days[date.getDay()];
+
+if (minutes <10){
+    minutes = `0${minutes}`;
+}}
+
+return `${day} ${hours}:${minutes}`;
 
 function cityname(event) {
   event.preventDefault();
