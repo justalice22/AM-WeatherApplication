@@ -21,10 +21,11 @@ dateTime.innerHTML = `${day} ${hours}:${min}`;
 function displayTemp(response) {
   let currentTemp = response.data.temperature.current;
   let tempValue = document.querySelector(".weather-temp-value");
-  let description = document.querySelector(".weather-text");
-  let humidityval = document.querySelector(".humidity");
-  let windval = document.querySelector(".wind");
+  let description = document.querySelector("#weather-text");
+  let humidityval = document.querySelector("#humidity");
+  let windval = document.querySelector("#wind");
   let iconfound = document.querySelector("#icon");
+  let cityelement = document.querySelector("#city-name")
 
   currentTemp = Math.round(currentTemp);
   tempValue.innerHTML = `${currentTemp}`;
@@ -32,14 +33,12 @@ function displayTemp(response) {
   humidityval.innerHTML = `${response.data.temperature.humidity}%`;
   windval.innerHTML = `${response.data.temperature.wind} kmh`;
   iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
-
+  cityelement.innerHTML = response.data.city;
 }
 
 function cityname(event) {
   event.preventDefault();
   let searchResult = document.querySelector("#search-form-value");
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${searchResult.value}`;
   let apiCity = searchResult.value;
   let apiKey = "85567b36bfa10c47aa81te3603co6f30";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${apiCity}&key=${apiKey}&units=metric`;
