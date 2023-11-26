@@ -1,21 +1,3 @@
-//let now = new Date();
-//let hours = now.getHours();
-//let min = now.getMinutes();
-//let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-//];
-//let day = days[now.getDay()];
-
-//let newdate = document.querySelector("#date-time");
-//newdate.innerHTML = `${day} ${hours}:${min}`;
-//
-
 function displayTemp(response) {
   let currentTemp = response.data.temperature.current;
   let tempValue = document.querySelector(".weather-temp-value");
@@ -36,6 +18,8 @@ function displayTemp(response) {
   iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
   cityelement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
+
+  console.log(response.data);
 
 }
 

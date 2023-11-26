@@ -89,3 +89,25 @@ main{
     margin-top:16px;
     font-size:28px;
 }
+
+.weather-forecast{
+margin-top: 20px;
+text-align:left;
+
+}
+
+
+.forecast-date{
+    font-size: 18px;
+    color:#D55D95;
+    font-weight: 500;
+}
+
+.forecast-temp{
+    font-size: 13px;
+}
+
+.lowest-temp{
+    color: grey;
+}
+
