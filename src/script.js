@@ -60,19 +60,18 @@ function getForecast(city){
 
  function displayForecast(response){
   console.log(response.data);
-  let days = ["Tue","Wed","Thu","Fri","Sat"];
   let forecastHTML = "";
 
-  days.forEach(function (day){
+  response.data.daily.forEach(function (day){
     forecastHTML = forecastHTML +
 
   `<div class = "weather-forecast">
     
     <div class = "col-5">
-      <div class = "forecast-date"> ${day} </div>
+      <div class = "forecast-date"> Tues </div>
       <div class = "forecast-icon"> 🤩 </div>    
       <div class = "forecast-temp">
-        <span class = "highest-temp">18*C</span>
+        <span class = "highest-temp">55*C</span>
         <span class = "lowest-temp"> 12*C</span>
         
       
@@ -83,9 +82,9 @@ function getForecast(city){
 
  let forecaseElement = document.querySelector("#forecast");
  forecaseElement.innerHTML = forecastHTML;
-}
-displayForecast("Paris");
 
+displayForecast("Paris");
+ }
 
 let city = document.querySelector("form");
 city.addEventListener("submit", cityname);
