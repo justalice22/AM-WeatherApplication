@@ -114,6 +114,7 @@ text-align: center;
 }
 .forecast-temp{
     font-size: 13px;
+    padding-left: 10px;
 }
 
 .lowest-temp{
