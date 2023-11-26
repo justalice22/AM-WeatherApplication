@@ -19,8 +19,7 @@ function displayTemp(response) {
   cityelement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
 
-  console.log(response.data);
-
+  
 }
 
 function formatDate(date){
@@ -52,7 +51,15 @@ function cityname(event) {
   
 }
 
- function displayForecast(){
+function getForecast(city){
+  let apiKey = "85567b36bfa10c47aa81te3603co6f30"
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+  
+}
+
+ function displayForecast(response){
+  console.log(response.data);
   let days = ["Tue","Wed","Thu","Fri","Sat"];
   let forecastHTML = "";
 
@@ -77,13 +84,13 @@ function cityname(event) {
  let forecaseElement = document.querySelector("#forecast");
  forecaseElement.innerHTML = forecastHTML;
 }
-displayForecast();
+displayForecast("Paris");
 
 
 let city = document.querySelector("form");
 city.addEventListener("submit", cityname);
 //
-
+getForecast("Paris");
 
 
 
