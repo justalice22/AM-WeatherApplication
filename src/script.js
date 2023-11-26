@@ -14,12 +14,12 @@ function displayTemp(response) {
   tempValue.innerHTML = `${currentTemp}`;
   description.innerHTML = response.data.condition.description;
   humidityval.innerHTML = `${response.data.temperature.humidity}%`;
-  windval.innerHTML = `${response.data.temperature.wind} kmh`;
+  windval.innerHTML = `${response.data.wind.speed} kmh`;
   iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
   cityelement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
   getForecast(response.data.city);
-  
+  console.log(response.data.temperature);
   
 }
 
@@ -102,5 +102,6 @@ city.addEventListener("submit", cityname);
 //
 getForecast("London");
 searchCity("London");
+
 
 
