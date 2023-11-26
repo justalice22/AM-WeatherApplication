@@ -51,6 +51,34 @@ function cityname(event) {
   axios.get(apiUrl).then(displayTemp);
 }
 
+ function displayForecast(){
+  let days = ["Tue","Wed","Thu","Fri","Sat"];
+  let forecastHTML = "";
+
+  days.forEach(function (day){
+    forecastHTML = forecastHTML +
+
+  `<div class = "weather-forecast">
+    
+    <div class = "col-5">
+      <div class = "forecast-date"> ${day} </div>
+      <div class = "forecast-icon"> 🤩 </div>    
+      <div class = "forecast-temp">
+        <span class = "highest-temp">18*C</span>
+        <span class = "lowest-temp"> 12*C</span>
+        
+      
+      </div>
+  </div>`;
+
+ });
+
+ let forecaseElement = document.querySelector("#forecast");
+ forecaseElement.innerHTML = forecastHTML;
+}
+displayForecast();
+
+
 let city = document.querySelector("form");
 city.addEventListener("submit", cityname);
 //
