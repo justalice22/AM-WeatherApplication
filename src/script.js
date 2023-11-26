@@ -1,7 +1,7 @@
-let now = new Date();
-let hours = now.getHours();
-let min = now.getMinutes();
-let days = [
+//let now = new Date();
+//let hours = now.getHours();
+//let min = now.getMinutes();
+//let days = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -9,11 +9,11 @@ let days = [
   "Thursday",
   "Friday",
   "Saturday"
-];
-let day = days[now.getDay()];
+//];
+//let day = days[now.getDay()];
 
-let newdate = document.querySelector("#date-time");
-newdate.innerHTML = `${day} ${hours}:${min}`;
+//let newdate = document.querySelector("#date-time");
+//newdate.innerHTML = `${day} ${hours}:${min}`;
 //
 
 function displayTemp(response) {
@@ -24,6 +24,8 @@ function displayTemp(response) {
   let windval = document.querySelector("#wind");
   let iconfound = document.querySelector("#icon");
   let cityelement = document.querySelector("#city-name");
+  let timeElement = document.querySelector("#date-time");
+  let date = new Date(response.data.time *1000);
   
 
   currentTemp = Math.round(currentTemp);
@@ -33,7 +35,25 @@ function displayTemp(response) {
   windval.innerHTML = `${response.data.temperature.wind} kmh`;
   iconfound.innerHTML = `<img src="${response.data.condition.icon_url}" class = "icon"/>`;
   cityelement.innerHTML = response.data.city;
+  timeElement.innerHTML = formatDate(date);
 
+}
+
+function formatDate(date){
+let mins = date.getMinutes();
+let hours = date.getHours();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+let day = days[date.getDay()];
+
+return `${day} ${hours}:${mins}`
 }
 
 
@@ -49,5 +69,7 @@ function cityname(event) {
 
 let city = document.querySelector("form");
 city.addEventListener("submit", cityname);
+//
+
 
 
