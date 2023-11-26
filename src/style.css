@@ -91,7 +91,7 @@ main{
 }
 
 .weather-forecast{
-padding-left: 40px;
+
 display:flex;
 justify-content: center;
 text-align: center;
@@ -100,6 +100,9 @@ text-align: center;
 
 .forecast-block{
     padding-top: 20px;
+    
+    display: block;
+    justify-content: center;
 }
 
 
@@ -110,11 +113,13 @@ text-align: center;
 }
 
 .forecast-icon{
-    font-size:20px;
+    height:90px;
 }
+
+
 .forecast-temp{
     font-size: 13px;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .lowest-temp{
